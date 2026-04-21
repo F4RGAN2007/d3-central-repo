@@ -59,6 +59,34 @@ open http://localhost:8080   # o el KC_HTTP_PORT que hayas configurado
 ```
  
 Iniciar sesión con las credenciales definidas en `.env` (`KC_ADMIN_USER` / `KC_ADMIN_PASSWORD`).
- 
+Una vez iniciada sesión arriba a la derecha cambian el `master` por `viva-eventos` que es el realm de trabajo.
+
 ---
+
+
+
+### Roles del sistema
+
+### ROLE_ADMIN
+Control total del sistema.
+
+### ROLE_EVENT_CREATOR
+Puede crear y administrar sus propios eventos, incluyendo precios y promociones.
+
+### ROLE_CLIENT
+Puede visualizar eventos y comprar boletas.
  
+**Ejemplos de uso en código:**
+
+```java
+
+@PreAuthorize("hasRole('ADMIN')")
+public void eliminarUsuario() {}
+
+@PreAuthorize("hasRole('EVENT_CREATOR')")
+public void crearEvento() {}
+
+@PreAuthorize("hasRole('CLIENT')")
+public void comprarBoleta() {}
+
+```
