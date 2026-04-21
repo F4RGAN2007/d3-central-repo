@@ -3,10 +3,10 @@
 # Verifica que el stack de Keycloak esté corriendo correctamente.
 # Uso: ./verify-keycloak.sh [puerto]
 
-"""
-Dentro de la raiz se puede ejecutar este script después de hacer el docker compose up. Sirve para confirmar que los 
-4 puntos críticos están OK: contenedores corriendo, health endpoint, endpoint OIDC discovery y consola admin.
-"""
+
+#Dentro de la raiz se puede ejecutar este script después de hacer el docker compose up. Sirve para confirmar que los 
+#4 puntos críticos están OK: contenedores corriendo, health endpoint, endpoint OIDC discovery y consola admin.
+
 #También es útil para los pipelines de CI/CD, para validar que el despliegue de Keycloak fue exitoso antes de avanzar a los otros pasos
 
 set -euo pipefail
@@ -16,8 +16,8 @@ KC_URL="http://localhost:${PORT}"
 PASS=0
 FAIL=0
 
-ok()   { echo "  ✔  $1"; ((PASS++)); }
-fail() { echo "  ✖  $1"; ((FAIL++)); }
+ok()   { echo "  [OK]  $1"; ((PASS+=1)); }
+fail() { echo "  [FAIL]  $1"; ((FAIL+=1)); }
 info() { echo "  ─  $1"; }
 
 echo ""

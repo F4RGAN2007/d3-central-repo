@@ -19,7 +19,7 @@
  
 ```bash
 # 1. Clonar / posicionarse en la raíz del proyecto
-cd viva-eventos/
+cd Proyecto_Desarrollo3/
  
 # 2. Crear el archivo de entorno a partir del ejemplo
 cp .env.example .env
@@ -55,7 +55,8 @@ docker compose ps
 docker compose --env-file .env up -d --wait
  
 # Acceder a la consola de administración
-open http://localhost:8080   # o el KC_HTTP_PORT que hayas configurado
+start http://localhost:8080   # o el KC_HTTP_PORT que hayas configurado
+#open, xdg-open para macos, linux
 ```
  
 Iniciar sesión con las credenciales definidas en `.env` (`KC_ADMIN_USER` / `KC_ADMIN_PASSWORD`).
