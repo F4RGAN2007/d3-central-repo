@@ -32,6 +32,7 @@ services:
     container_name: viva_keycloak
     restart: unless-stopped
     command: start-dev          # Según Claude usar 'start' en producción con TLS
+    command: start-dev --import-realm          # Según Claude usar 'start' en producción con TLS
     depends_on:
       keycloak-db:
         condition: service_healthy
