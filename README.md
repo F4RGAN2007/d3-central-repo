@@ -61,4 +61,39 @@ open http://localhost:8080   # o el KC_HTTP_PORT que hayas configurado
 Iniciar sesión con las credenciales definidas en `.env` (`KC_ADMIN_USER` / `KC_ADMIN_PASSWORD`).
  
 ---
- 
+
+
+
+## Pruebas del endpoint ClientController
+
+**Pasos**
+
+- Revisa que el puerto que estas utilizando en la linea 6 del application.properties es igual 
+al del .env del keycloak
+
+- Luego inicia keycloak y verifica que esten creado los rols ROLE_CLIENT, ROLE_ADMIN y ROLE_EVENT_CREATOR, 
+y que este creado el client: spring-boot-client
+
+- Crear un usuario en el keycloak, con todos los datos y asignarle el rol de ROLE_CLIENT.
+Para crearlo van a: Users - CreateUser, despues de poner los datos entran al usuario y se dirigen a
+Role mapping -> Assing Role -> Arriba a la izquierda cambia filtrar por clientes a filtrar por roles y 
+seleccionan el Rol de cliente en la parte de abajo. 
+
+- Efecuta este comando en la bash cambiando los datos a los del usuario que se creo.
+```bash
+curl -X POST http://localhost:8387/realms/viva-eventos/protocol/openid-connect/token \
+-H "Content-Type: application/x-www-form-urlencoded" \
+-d "client_id=spring-boot-client" \
+-d "client_secret=EpMx9ekvZemdjofbsUoDFhRDaQ4Iaqw0" \
+-d "grant_type=password" \
+-d "username=EL_USERNAME_DEL_USUARIO_CREADO" \
+-d "password=LA_CONTRASEÑA_DEL_USUARIO_CREADO"
+```
+
+- Posteriormente te dara un access_token y lo copiaras y lo utilizaras en este comando
+remplazando el TOKEN por el que copiaste.
+```bash
+curl http://localhost:8081/client/test \
+-H "Authorization: Bearer TOKEN"
+```
+Puedes cambiar el puerto por que estas utilizando
