@@ -121,6 +121,7 @@ jacoco.exec
 keycloak-data/
 keycloak/data/
 # para no commitear exports de realm con secretos (luego veremos que es esto).
+keycloak/realms/*.json 
 keycloak/realms/*.json
 !keycloak/realms/viva_eventos.json
 
