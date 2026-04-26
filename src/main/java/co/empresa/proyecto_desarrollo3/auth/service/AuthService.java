@@ -1,5 +1,6 @@
 package co.empresa.proyecto_desarrollo3.auth.service;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -13,6 +14,8 @@ import org.springframework.web.client.RestTemplate;
 @Service
 public class AuthService {
 
+    @Autowired
+    private RestTemplate restTemplate;
     @Value("${keycloak.token-url}")
     private String tokenUrl;
 
@@ -23,7 +26,7 @@ public class AuthService {
     private String clientSecret;
 
     public String login(String username, String password) {
-        RestTemplate restTemplate = new RestTemplate();
+        
 
         MultiValueMap<String, String> params = new LinkedMultiValueMap<>();
         params.add("grant_type", "password");
@@ -44,7 +47,7 @@ public class AuthService {
     }
 
     public String refresh(String refreshToken) {
-        RestTemplate restTemplate = new RestTemplate();
+        
 
         MultiValueMap<String, String> params = new LinkedMultiValueMap<>();
         params.add("grant_type", "refresh_token");

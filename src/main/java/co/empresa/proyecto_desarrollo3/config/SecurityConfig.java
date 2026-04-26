@@ -2,6 +2,7 @@ package co.empresa.proyecto_desarrollo3.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.web.SecurityFilterChain;
@@ -24,8 +25,8 @@ public class SecurityConfig {
                 .requestMatchers("/").permitAll()
                 .requestMatchers("/public/**").permitAll()
                 .requestMatchers("/h2-console/**").permitAll()
-                .requestMatchers("/auth/login").permitAll()  
-                .requestMatchers("/auth/refresh").permitAll() 
+                .requestMatchers(HttpMethod.POST, "/auth/login").permitAll()
+                .requestMatchers(HttpMethod.POST, "/auth/refresh").permitAll()
 
                 // protegidos por rol
                 .requestMatchers("/client/**").hasRole("CLIENT")
