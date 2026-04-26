@@ -25,9 +25,9 @@ public class SecurityConfig {
                 .requestMatchers("/h2-console/**").permitAll()
 
                 // protegidos por rol
-                .requestMatchers("/client/**").hasRole("USER")
+                .requestMatchers("/client/**").hasRole("CLIENT")
                 .requestMatchers("/admin/**").hasRole("ADMIN")
-                .requestMatchers("/creator/**").hasRole("USER")
+                .requestMatchers("/creator/**").hasRole("EVENT_CREATOR")
 
                 .anyRequest().authenticated()
             )

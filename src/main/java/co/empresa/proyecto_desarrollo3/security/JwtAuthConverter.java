@@ -23,7 +23,7 @@ public class JwtAuthConverter implements Converter<Jwt, AbstractAuthenticationTo
 
             for (String role : roles) {
                 authorities.add(
-                    new SimpleGrantedAuthority("ROLE_" + role.toUpperCase())
+                    new SimpleGrantedAuthority(role.toUpperCase())
                 );
             }
         }

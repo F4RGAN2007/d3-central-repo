@@ -18,14 +18,14 @@ public class ClientController {
     }
 
     //  Solo usuarios con rol USER
-    @PreAuthorize("hasRole('USER')")
+    @PreAuthorize("hasRole('CLIENT')")
     @GetMapping("/secure-method")
     public String metodoSeguro() {
-        return "Metodo seguro USER";
+        return "Metodo seguro CLIENT";
     }
 
     //  USER + validación de propiedad (organizerId)
-    @PreAuthorize("hasRole('USER') and #id == authentication.token.claims['sub']")
+    @PreAuthorize("hasRole('CLIENT') and #id == authentication.token.claims['sub']")
     @GetMapping("/secure/{id}")
     public String recursoPropio(@PathVariable String id, Authentication authentication) {
 
