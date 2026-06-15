@@ -1,7 +1,14 @@
 # VivaEventos — Documentación de Arquitectura de Microservicios
 
 
-## 📁 Estructura del Repositorio (Monorepo de momento)
+## 📁 Estructura del Repositorio 
+### - Kubernetes
+### - Keycloak
+### - RabbitMQ
+### - Despliegue en GCP
+### - Imágenes de Docker Hub: https://hub.docker.com/repositories/danielgomezcano
+### - Multirepo
+### - Decisión final del checkout y pagos: Stripe
 
 Los microservicios convivirán en este repositorio, cada uno en su propia carpeta con responsabilidades bien definidas. Esto puede cambiar en la próxima sesión con el profesor:
 
